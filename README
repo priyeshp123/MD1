@@ -1,0 +1,32 @@
+
+# To activate this environment, use
+#
+#     $ conda activate /home/priyesh/projects/MD1/venv
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+git config --global user.name "priyeshp123"
+git config --global user.email priyesh3386@yahoo.co.uk
+
+echo "# MD1" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/priyeshp123/MD1.git
+git push -u origin main
+
+create __init__.py under each folder container python source to build packages.
+
+Plan:
+
+1. Create Git repository
+2. Setup environment
+3. setup.py
+4. requirements.txt
+
+5. Src folder and build package
+
+
