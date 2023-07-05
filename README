@@ -20,6 +20,10 @@ git push -u origin main
 
 create __init__.py under each folder container python source to build packages.
 
+All python code which needs to be built into packages will be created under
+src. Under this directory, create sub-directories for each component. Each 
+sub-directory must have __init___.py.
+
 Plan:
 
 1. Create Git repository
@@ -28,5 +32,53 @@ Plan:
 4. requirements.txt
 
 5. Src folder and build package
+
+Process:
+
+1. Download SEC Filings : Download_SEC_Filings.ipynb
+
+   SEC Website --> ../MD1/data/R1000/filings
+
+2. Validate and copy filing to stage 1: extract_docs.ksh
+
+   Extract document filingSummary.xml 
+
+   ../MD1/data/R1000/filings --> ../MD1/data/R1000/extract
+
+3. Extract reports : Stage1_extract_reports.ipynb  
+
+   Create a mapping file from filingSummary.xml (filemap.csv) with following
+   fields (separated by !):
+
+   report file name, short desc, long desc, filetype
+
+   filetype is one of: htm, xml
+
+4. Extract reports : extract_reports.ksh
+
+   ../MD1./data/R1000/filings --> ../MD1/data/R1000/reports
+
+   Use pattern matches to find reports of interest (balance,cash,income)
+   and place them in reports directory.
+
+   files are of the form:
+
+   bal_report.<type> cash_report.<type> inc_report.<type>
+
+   where type is one of: htm, xml
+
+5. Extract tables : Stage2_extract_tables.ipynb
+
+   Loop through each ticker in ../R1000/reports and extract tables.
+   Create a master data set - dictionary(ticker,yr, [inc,cash,bal])
+   Save master data set as pickle file.
+
+6. Standardise tables : Stage3_standardise_tables.ipynb
+
+   Create mapping of fields of interest. 
+   Extract line items of interest and create a standardised table for 
+   each statement type (bal,inc,cash).
+   Standardised headings.
+   Resolve issues with reporting units (thousands, millions)
 
 

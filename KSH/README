@@ -1,0 +1,14 @@
+Files are download from SEC website into directory:
+
+$DATA/projects/MD1/data/R1000/filings
+
+clean_files.ksh cleans files and places them in:
+
+$DATA/projects/MD1/data/R1000/filings
+
+Problems:
+
+Some companies have consolidated income statement and consolidated statements ofcomprehensive income.
+
+Some companies have multiple statements for different parts of the company
+which are indistinguishable.

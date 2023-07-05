@@ -1,4 +1,7 @@
 pandas
 numpy
 seaborn
+bs4
+requests
+lxml
 -e .
