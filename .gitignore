@@ -171,3 +171,5 @@ notes/
 .tmp
 .csv
 .tsv
+.keep
+.save
